@@ -1,0 +1,135 @@
+main {
+  padding: 24px;
+}
+.profile-titleblock {
+  width: 130px;
+  height: 48px;
+  margin-left: 24px;
+}
+
+.profile-card {
+  background-color: #ffffff;
+  width: 1201px;
+  height: 1577px;
+  border-radius: 8px 0px 0px 0px;
+  border: 1px 0px 0px 0px;
+  margin-top: 24px;
+  padding: 24px;
+}
+
+.profile-card-header {
+  width: 500px;
+  height: 80px;
+  display: grid;
+  grid-template-columns: 80px 189px;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.profile.profile-icon {
+  justify-content: center;
+  align-content: center;
+  width: 80px;
+  height: 80px;
+}
+
+.profile-header-text h3,
+.profile.profile-icon p {
+  font-size: 32px;
+}
+
+.profile-header-text {
+  align-content: center;
+  width: 500px;
+}
+
+.profile-header-text p {
+  font-size: 18px;
+  color: #64648c;
+}
+
+.profile-form {
+  display: grid;
+  grid-template-columns: 565px 565px;
+  margin-top: 20px;
+  gap: 24px;
+}
+
+.basic-info,
+.training-info {
+  height: 764px;
+}
+
+.basic.profile-form-inputs,
+.training.profile-form-inputs {
+  display: grid;
+  grid-template-rows: repeat(5, 108px);
+  height: 764px;
+  gap: 32px;
+}
+
+.basic-info h3,
+.training-info h3,
+.contact-info h3,
+.bio-info h3 {
+  margin: 24px 0px;
+}
+
+.profileimg-section {
+  width: 248px;
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  grid-template-rows: 24px 1fr;
+  padding-bottom: 24px;
+  align-items: center;
+}
+
+.profileimg.profile-icon {
+  grid-column: 1;
+}
+
+.profileimg-text {
+  text-align: center;
+  color: #64648c;
+  font-size: 16px;
+}
+
+.profileimg-input-text {
+  margin-left: 16px;
+  font-size: 16px;
+  color: #96a0be;
+}
+
+.contact.profile-form-inputs {
+  display: grid;
+  grid-template-rows: repeat(2, 108px);
+  gap: 32px;
+}
+
+.bio.profile-form-inputs,
+.profile-buttons {
+  grid-column: 2;
+}
+
+.bio.profile-form-inputs textarea {
+  height: 338px;
+  font-size: 18px;
+}
+
+.character-counter{
+  font-size: 16px;
+}
+
+.profile-buttons {
+  display: grid;
+  justify-items: flex-end;
+  margin-top: 32px;
+  margin-right: 20px;
+}
+
+.profile-buttons button {
+  border-radius: 8px;
+  background-color: #000046;
+  color: #ffffff;
+}
+

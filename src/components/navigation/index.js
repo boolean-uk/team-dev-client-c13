@@ -6,21 +6,36 @@ import useAuth from "../../hooks/useAuth"
 import './style.css'
 
 const Navigation = () => {
-	const { token } = useAuth();
+	const { token, user } = useAuth();
 
 	if (!token) {
 		return null;
 	}
 
     return (
-        <nav>
-            <ul>
-                <li><NavLink to='/'><HomeIcon colour="#000046" /><p>Home</p></NavLink></li>
-                <li><NavLink to='/'><ProfileIcon /><p>Profile</p></NavLink></li>
-                <li><NavLink to='/'><CohortIcon /><p>Cohort</p></NavLink></li>
-            </ul>
-        </nav>
-    )
+      <nav>
+        <ul>
+          <li>
+            <NavLink to="/">
+              <HomeIcon colour="#000046" />
+              <p>Home</p>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to={user ? `/profile/${user.id}` : "/"}>
+              <ProfileIcon />
+              <p>Profile</p>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/">
+              <CohortIcon />
+              <p>Cohort</p>
+            </NavLink>
+          </li>
+        </ul>
+      </nav>
+    );
 }
 
 export default Navigation;

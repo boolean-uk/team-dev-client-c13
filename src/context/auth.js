@@ -13,13 +13,18 @@ const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [token, setToken] = useState(null);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
+    const storedUser = JSON.parse(localStorage.getItem("user"));
 
-    if (storedToken) {
+    if (storedToken && storedUser) {
       setToken(storedToken);
-      navigate(location.state?.from?.pathname || "/");
+      setUser(storedUser);
+      if (location.state?.from?.pathname) {
+        navigate(location.state.from.pathname || "/");
+      }
     }
   }, [location.state?.from?.pathname, navigate]);
 
@@ -31,14 +36,17 @@ const AuthProvider = ({ children }) => {
     }
 
     localStorage.setItem("token", res.data.token);
-
-    setToken(res.token);
+    localStorage.setItem("user", JSON.stringify(res.data.user));
+    setToken(res.data.token);
+    setUser(res.data.user);
     navigate(location.state?.from?.pathname || "/");
   };
 
   const handleLogout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("user");
     setToken(null);
+    setUser(null);
   };
 
   const handleRegister = async (email, password) => {
@@ -48,11 +56,22 @@ const AuthProvider = ({ children }) => {
     navigate("/verification");
   };
 
-  const handleCreateProfile = async (firstName, lastName, githubUrl, bio) => {
+  const handleCreateProfile = async (firstName, lastName, githubUrl, bio, profilePicture) => {
     const { userId } = jwt_decode(token);
     localStorage.setItem("token", token);
 
-    await createProfile(userId, firstName, lastName, githubUrl, bio);
+    const res = await createProfile(
+      userId,
+      firstName,
+      lastName,
+      githubUrl,
+      bio,
+      profilePicture
+    );
+
+    localStorage.setItem("user", JSON.stringify(res.data.user));
+    setToken(res.data.token);
+    setUser(res.data.user);
 
     navigate("/");
   };
@@ -63,6 +82,7 @@ const AuthProvider = ({ children }) => {
     onLogout: handleLogout,
     onRegister: handleRegister,
     onCreateProfile: handleCreateProfile,
+    user,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
