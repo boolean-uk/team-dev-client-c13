@@ -1,5 +1,4 @@
 // Function to validate email and return specific error messages
-import { useState } from "react";
 
 export const validateEmail = (email) => {
   if (!email) {
