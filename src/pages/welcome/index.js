@@ -1,8 +1,8 @@
 import { useState } from "react";
-import RegistrationStepper from "../../components/stepper";
+import Stepper from "../../components/stepper";
 import useAuth from "../../hooks/useAuth";
-import RegistrationStepOne from "./stepOne";
-import RegistrationStepTwo from "./stepTwo";
+import StepOne from "./stepOne";
+import StepTwo from "./stepTwo";
 import "./style.css";
 
 const Welcome = () => {
@@ -13,7 +13,6 @@ const Welcome = () => {
 		lastName: "",
 		githubUsername: "",
 		bio: "",
-		profilePicture: "",
 	});
 
 	const onChange = (event) => {
@@ -26,7 +25,7 @@ const Welcome = () => {
 	};
 
 	const onComplete = () => {
-		onCreateProfile(profile.firstName, profile.lastName, profile.githubUsername, profile.bio, profile.profilePicture);
+		onCreateProfile(profile.firstName, profile.lastName, profile.githubUsername, profile.bio);
 	};
 
 	return (
@@ -36,10 +35,10 @@ const Welcome = () => {
 				<p className="text-blue1">Create your profile to get started</p>
 			</div>
 
-			<RegistrationStepper profileInputData={{firstName: profile.firstName, lastName: profile.lastName}} header={<WelcomeHeader />} onComplete={onComplete}>
-				<RegistrationStepOne data={profile} setData={onChange} />
-				<RegistrationStepTwo data={profile} setData={onChange} />
-			</RegistrationStepper>
+			<Stepper header={<WelcomeHeader />} onComplete={onComplete}>
+				<StepOne data={profile} setData={onChange} />
+				<StepTwo data={profile} setData={onChange} />
+			</Stepper>
 		</main>
 	);
 };

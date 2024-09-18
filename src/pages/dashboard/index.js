@@ -7,17 +7,12 @@ import TextInput from "../../components/form/textInput";
 import Posts from "../../components/posts";
 import useModal from "../../hooks/useModal";
 import "./style.css";
-import useAuth from "../../hooks/useAuth";
 
 const Dashboard = () => {
   const [searchVal, setSearchVal] = useState("");
   const [searchResults, setSearchResults] = useState([]); // State for search results
   const [isLoading, setIsLoading] = useState(false); // Loading state
   const [errorMessage, setErrorMessage] = useState(""); // Error message state
-
-	const [searchVal, setSearchVal] = useState('');
-	 const { user } = useAuth();
-
 
   const onChange = (e) => {
     setSearchVal(e.target.value);
@@ -37,19 +32,8 @@ const Dashboard = () => {
     if (searchVal.trim().length === 0) return;
 
     setIsLoading(true);
-    setErrorMessage(""); // Clear previous error
-	return (
-		<>
-			<main>
-				<Card>
-					<div className="create-post-input">
-						<div className="profile-icon">
-							<p>{`${user.firstName[0]}${user.lastName[0]}`}</p>
-						</div>
-						<Button text="What's on your mind?" onClick={showModal} />
-					</div>
-				</Card>
-        
+    setErrorMessage(""); // Clear previous errors
+
     try {
       const response = await fetch(`/api/users/search?name=${searchVal}`);
       const result = await response.json();

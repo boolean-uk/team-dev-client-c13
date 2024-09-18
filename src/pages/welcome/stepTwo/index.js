@@ -1,6 +1,6 @@
 import Form from "../../../components/form"
 
-const RegistrationStepTwo = ({ data, setData }) => {
+const StepTwo = ({ data, setData }) => {
     return (
         <>
             <div className="welcome-formheader">
@@ -16,4 +16,4 @@ const RegistrationStepTwo = ({ data, setData }) => {
     )
 }
 
-export default RegistrationStepTwo
+export default StepTwo
