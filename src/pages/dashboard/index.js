@@ -9,20 +9,20 @@ import useModal from "../../hooks/useModal";
 import "./style.css";
 
 const Dashboard = () => {
-  const [searchVal, setSearchVal] = useState("");
+  const [searchVal, setSearchVal] = useState(""); // State for search input
   const [searchResults, setSearchResults] = useState([]); // State for search results
   const [isLoading, setIsLoading] = useState(false); // Loading state
   const [errorMessage, setErrorMessage] = useState(""); // Error message state
 
-  const onChange = (e) => {
-    setSearchVal(e.target.value);
-  };
-
   // Use the useModal hook to get the openModal and setModal functions
   const { openModal, setModal } = useModal();
 
+  const onChangeSearchInput = (e) => {
+    setSearchVal(e.target.value);
+  };
+
   // Create a function to run on user interaction
-  const showModal = () => {
+  const showCreatePostModal = () => {
     setModal("Create a post", <CreatePostModal />);
     openModal();
   };
@@ -30,9 +30,6 @@ const Dashboard = () => {
   // Search handler for fetching user data
   const handleSearch = async () => {
     if (searchVal.trim().length === 0) return;
-
-    setIsLoading(true);
-    setErrorMessage(""); // Clear previous errors
 
     try {
       const response = await fetch(`/api/users/search?name=${searchVal}`);
@@ -61,7 +58,7 @@ const Dashboard = () => {
             <div className="profile-icon">
               <p>AJ</p>
             </div>
-            <Button text="What's on your mind?" onClick={showModal} />
+            <Button text="What's on your mind?" onClick={showCreatePostModal} />
           </div>
         </Card>
 
@@ -75,7 +72,7 @@ const Dashboard = () => {
               icon={<SearchIcon />}
               value={searchVal}
               name="Search"
-              onChange={onChange}
+              onChange={onChangeSearchInput}
               onKeyPress={handleKeyPress} // key press handler for Enter key
             />
             <Button
