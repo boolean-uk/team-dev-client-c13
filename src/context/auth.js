@@ -66,11 +66,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const handleCreateProfile = async (
-    firstName,
-    lastName,
-    githubUrl,
-    bio,
-    profilePicture
+    firstName, lastName, bio, githubUrl, profilePicture
   ) => {
     const { userId } = jwt_decode(token);
     localStorage.setItem("token", token);
@@ -80,7 +76,6 @@ const AuthProvider = ({ children }) => {
       userId,
       firstName,
       lastName,
-      githubUrl,
       bio,
       profilePicture
     );

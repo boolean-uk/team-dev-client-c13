@@ -27,39 +27,58 @@ const RegistrationStepOne = ({ data, setData }) => {
     }
 
     return (
-        <>
-            <div className="welcome-formheader">
-				<h3>Basic info</h3>
-			</div>
-            <Form className="welcome-form">
-                <div className="welcome-form-profileimg">
-                    <p className="text-blue1">Photo</p>
-                    <div className="welcome-form-profileimg-input">
-                        {profilePictureBase64 ? (
-                            <img src={profilePictureBase64} alt="Avatar Preview" style={{ width: '50px', height: '50px', objectFit: 'cover' }} />
-                        ) : (
-                            <ProfileIcon colour="#28C846" background="#64DC78" />
-                        )}
-                        <input type="file" name="profilePicture" accept="image/png, image/jpeg" onChange={toBase64} />
-                    </div>
-                    <p className="welcome-form-profileimg-error">
-                        Please upload a valid image file
-                    </p>
-                </div>
-                <div className="welcome-form-inputs">
-                    <TextInput onChange={setData} value={data.firstName} name="firstName" label={"First name*"} />
-                    <TextInput onChange={setData} value={data.lastName} name="lastName" label={"Last name*"} />
-                    <TextInput
-                        onChange={setData}
-                        value={data.githubUsername}
-                        name="githubUsername"
-                        label={"Github Username"}
-                    />
-                    <p className="text-blue1">*required</p>
-                </div>
-            </Form>
-        </>
-    )
+      <>
+        <div className="welcome-formheader">
+          <h3>Basic info</h3>
+        </div>
+        <Form className="welcome-form">
+          <div className="welcome-form-profileimg">
+            <p className="text-blue1">Photo</p>
+            <div className="welcome-form-profileimg-input">
+              {profilePictureBase64 ? (
+                <img
+                  src={profilePictureBase64}
+                  alt="Avatar Preview"
+                  style={{ width: "50px", height: "50px", objectFit: "cover" }}
+                />
+              ) : (
+                <ProfileIcon colour="#28C846" background="#64DC78" />
+              )}
+              <input
+                type="file"
+                name="profilePicture"
+                accept="image/png, image/jpeg"
+                onChange={toBase64}
+              />
+            </div>
+            <p className="welcome-form-profileimg-error">
+              Please upload a valid image file
+            </p>
+          </div>
+          <div className="welcome-form-inputs">
+            <TextInput
+              onChange={setData}
+              value={data.firstName}
+              name="firstName"
+              label={"First name*"}
+            />
+            <TextInput
+              onChange={setData}
+              value={data.lastName}
+              name="lastName"
+              label={"Last name*"}
+            />
+            <TextInput
+              onChange={setData}
+              value={data.githubUrl}
+              name="githubUrl"
+              label={"Github Username"}
+            />
+            <p className="text-blue1">*required</p>
+          </div>
+        </Form>
+      </>
+    );
 }
 
 export default RegistrationStepOne

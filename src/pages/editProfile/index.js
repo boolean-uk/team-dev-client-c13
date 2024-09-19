@@ -10,7 +10,7 @@ import TeacherTrainingInfo from "../profile/profile-sections/teacher-training-se
 import ContactInfoSection from "../profile/profile-sections/contact-info-section";
 import BioInfoSection from "../profile/profile-sections/bio-info-section";
 import ProfileButtons from "../profile/profile-sections/profile-buttons";
-import { createProfile } from "../../service/apiClient";
+import { updateProfile } from "../../service/apiClient";
 import "../profile/profile.css";
 
 const EditProfile = () => {
@@ -40,7 +40,7 @@ const EditProfile = () => {
   const handleSave = async () => {
     setIsLoading(true);
     try {
-      await createProfile(
+      await updateProfile(
         updatedProfile.userId,
         updatedProfile.cohortId,
         updatedProfile.firstName,
