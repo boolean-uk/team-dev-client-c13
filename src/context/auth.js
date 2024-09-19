@@ -74,6 +74,7 @@ const AuthProvider = ({ children }) => {
   ) => {
     const { userId } = jwt_decode(token);
     localStorage.setItem("token", token);
+    setToken(token);
 
     const res = await createProfile(
       userId,
@@ -85,13 +86,12 @@ const AuthProvider = ({ children }) => {
     );
 
     const userToStore = {
-      id: res.data.user.id,
-      role: res.data.user.role,
-      firstName: res.data.user.firstName,
-      lastName: res.data.user.lastName,
+      id: res.id,
+      role: res.role,
+      firstName: res.firstName,
+      lastName: res.lastName,
     };
     localStorage.setItem("user", JSON.stringify(userToStore));
-    setToken(res.data.token);
     setUser(userToStore);
 
     navigate("/");
