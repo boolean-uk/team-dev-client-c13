@@ -2,12 +2,20 @@ import { useEffect, useState } from "react";
 import Post from "../post";
 import { getPosts } from "../../service/apiClient";
 
-const Posts = () => {
+const Posts = ({ newPostsubmitted, setNewPostSubmitted }) => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    getPosts().then(setPosts);
-  }, []);
+    const fetchPosts = async () => {
+      await getPosts().then(setPosts);
+
+      if (newPostsubmitted) {
+        setNewPostSubmitted(false);
+      }
+    };
+
+    fetchPosts();
+  }, [newPostsubmitted]);
 
   return (
     <>

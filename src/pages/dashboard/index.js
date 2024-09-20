@@ -13,6 +13,7 @@ const Dashboard = () => {
   const [searchResults, setSearchResults] = useState([]); // State for search results
   const [isLoading, setIsLoading] = useState(false); // Loading state
   const [errorMessage, setErrorMessage] = useState(""); // Error message state
+  const [newPostsubmitted, setNewPostSubmitted] = useState(false);
 
   // Use the useModal hook to get the openModal and setModal functions
   const { openModal, setModal } = useModal();
@@ -23,7 +24,7 @@ const Dashboard = () => {
 
   // Show modal when the button is clicked
   const showCreatePostModal = () => {
-    setModal("Create a post", <CreatePostModal />);
+    setModal("Create a post", <CreatePostModal newPostsubmitted={newPostsubmitted} setNewPostSubmitted={setNewPostSubmitted}/>);
     openModal();
   };
 
@@ -74,7 +75,10 @@ const Dashboard = () => {
           </div>
         </Card>
 
-        <Posts />
+        <Posts
+          newPostsubmitted={newPostsubmitted}
+          setNewPostSubmitted={setNewPostSubmitted}
+        />
       </main>
 
       <aside>

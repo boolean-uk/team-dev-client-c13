@@ -5,7 +5,7 @@ import './style.css'
 import Button from '../button'
 import { createPost } from "../../service/apiClient"
 
-const CreatePostModal = () => {
+const CreatePostModal = ({newPostsubmitted, setNewPostSubmitted}) => {
     // Use the useModal hook to get the closeModal function so we can close the modal on user interaction
     const { closeModal } = useModal()
     const { user } = useAuth();
@@ -18,11 +18,12 @@ const CreatePostModal = () => {
         setText(e.target.value)
     }
 
-    const onSubmit = () => {
+    const onSubmit = async () => {
         setIsLoading(true)
         try {
-            createPost(text)
+            await createPost(text)
                 .then(() => {
+                  setNewPostSubmitted(true)
                     setIsLoading(false)
                     closeModal()
                 })
