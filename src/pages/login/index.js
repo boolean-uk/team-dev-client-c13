@@ -3,7 +3,7 @@ import Button from "../../components/button";
 import TextInput from "../../components/form/textInput";
 import useAuth from "../../hooks/useAuth";
 import CredentialsCard from "../../components/credentials";
-import { validateEmail, validatePassword } from "../../utils/validations";
+// import { validateEmail, validatePassword } from "../../utils/validations";
 import "./login.css";
 
 const Login = () => {
@@ -19,18 +19,18 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const emailError = validateEmail(formData.email);
-    const passwordError = validatePassword(formData.password)
-      ? ""
-      : "Password must be at least 8 characters long.";
+    // const emailError = validateEmail(formData.email);
+    // const passwordError = validatePassword(formData.password)
+    //   ? ""
+    //   : "Password must be at least 8 characters long.";
 
-    if (emailError || passwordError) {
-      setErrors({ email: emailError, password: passwordError });
-      return;
-    }
+    // if (emailError || passwordError) {
+    //   setErrors({ email: emailError, password: passwordError });
+    //   return;
+    // }
 
-    // If no errors, proceed with login
-    onLogin(formData.email, formData.password);
+    // // If no errors, proceed with login
+    // onLogin(formData.email, formData.password);
   };
 
   return (
