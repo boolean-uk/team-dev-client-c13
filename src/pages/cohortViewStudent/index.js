@@ -7,11 +7,11 @@ const CohortViewStudent = () => {
   const { token, user } = useAuth();
   const apiUrl = process.env.REACT_APP_API_URL;
 
-  const [cohort, setCohort] = useState("");
+  const [cohort, setCohort] = useState(null);
   const [teachers, setTeachers] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [grades, setGrades] = useState();
-  const [completion, setCompletion] = useState();
+  const [grades, setGrades] = useState(null);
+  const [completion, setCompletion] = useState(null);
 
   //function to calculate completion for user's grades
   function calculateCompletion(data) {
@@ -60,16 +60,13 @@ const CohortViewStudent = () => {
         setLoading(true);
 
         // Fetch cohort information
-        const cohortResponse = await fetch(
-          `${apiUrl}/cohorts/${user.cohort_id}`,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const cohortResponse = await fetch(`${apiUrl}/cohorts/1`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
         const cohortData = await cohortResponse.json();
         setCohort(cohortData.data);
 
@@ -110,7 +107,7 @@ const CohortViewStudent = () => {
     };
 
     fetchData();
-  }, [apiUrl, token, user.cohort_id, user.id]);
+  }, [apiUrl, token, user]);
 
   return (
     <div id="cohort-page-container">
@@ -135,7 +132,6 @@ const CohortViewStudent = () => {
               cohort?.users.map((user) => (
                 <li key={user.id} className="user-card">
                   <div className="profile-icon">
-                    {/* <p>{`${user.id}`}</p> */}
                     <p>JB</p>
                   </div>
                   <p className="bold-text">User Name</p>
