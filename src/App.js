@@ -11,6 +11,7 @@ import { AuthProvider, ProtectedRoute } from "./context/auth";
 import { ModalProvider } from "./context/modal";
 import { ProfileProvider } from "./context/profile";
 import Welcome from "./pages/welcome";
+import CohortViewStudent from "./pages/cohortViewStudent";
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
               <Route path="loading" element={<Loading />} />
               <Route path="verification" element={<Verification />} />
 
+<<<<<<< Updated upstream
               <Route
                 index
                 element={
@@ -61,6 +63,43 @@ const App = () => {
           </ModalProvider>
         </AuthProvider>
       </ProfileProvider>
+=======
+            <Route
+              index
+              element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="welcome"
+              element={
+                <ProtectedRoute disabledNav={true}>
+                  <Welcome />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/profile/:id"
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/cohort/:id"
+              element={
+                <ProtectedRoute>
+                  <CohortViewStudent />
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
+        </ModalProvider>
+      </AuthProvider>
+>>>>>>> Stashed changes
     </>
   );
 };

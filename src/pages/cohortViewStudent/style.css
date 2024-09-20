@@ -1,0 +1,87 @@
+#cohort-page-container {
+  display: flex;
+  gap: 25px;
+  margin: 24px;
+  width: calc(100vw - 201px);
+}
+
+.bold-text {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.light-text {
+  font-weight: 200;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+#cohort-page-container .profile-icon {
+  background-color: #28c846;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cohort-section-header {
+  border-bottom: 1px solid #e6ebf5;
+  display: flex;
+  gap: 15px;
+  padding: 15px 0;
+}
+
+.cohort-section {
+  width: 65%;
+}
+
+.right-side-container {
+  width: 35%;
+}
+
+#cohort-page-container .profile-icon .icon-text {
+  color: white;
+  font-size: 2.3rem;
+  font-weight: 400;
+  margin-bottom: 4px;
+}
+
+.cohort-section h3,
+.teachers-section h3,
+.exercises-section h3 {
+  border-bottom: 1px solid #e6ebf5;
+  padding-bottom: 24px;
+}
+
+.cohort-section .cohort-details {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: space-between;
+}
+
+.user-card {
+  flex: 0 0 50%;
+  box-sizing: border-box;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.exercise-details-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.exercise-details-container .aligned-left {
+  width: 35%;
+  margin-top: 5px;
+}
+
+.exercise-details-container .aligned-right {
+  width: 65%;
+  margin-top: 5px;
+}

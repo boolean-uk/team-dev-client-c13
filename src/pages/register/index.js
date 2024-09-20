@@ -3,7 +3,7 @@ import Button from "../../components/button";
 import TextInput from "../../components/form/textInput";
 import useAuth from "../../hooks/useAuth";
 import CredentialsCard from "../../components/credentials";
-import { validateEmail, validatePassword } from "../../utils/validations";
+// import { validateEmail, validatePassword } from "../../utils/validations";
 import "./register.css";
 
 const Register = () => {
@@ -17,19 +17,16 @@ const Register = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const emailError = validateEmail(formData.email);
-    const passwordError = validatePassword(formData.password);
-
-    if (emailError || passwordError) {
-      // If there are any validation errors, set them
-      setErrors({ email: emailError, password: passwordError });
-      return;
-    }
-
-    // If both validations pass, proceed with registration
-    onRegister(formData.email, formData.password);
+    //   e.preventDefault();
+    //   const emailError = validateEmail(formData.email);
+    //   const passwordError = validatePassword(formData.password);
+    //   if (emailError || passwordError) {
+    //     // If there are any validation errors, set them
+    //     setErrors({ email: emailError, password: passwordError });
+    //     return;
+    //   }
+    //   // If both validations pass, proceed with registration
+    //   onRegister(formData.email, formData.password);
   };
 
   return (

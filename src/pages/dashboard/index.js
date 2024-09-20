@@ -4,13 +4,14 @@ import Button from "../../components/button";
 import Card from "../../components/card";
 import CreatePostModal from "../../components/createPostModal";
 import TextInput from "../../components/form/textInput";
-import Posts from "../../components/posts";
+// import Posts from "../../components/posts";
 import useModal from "../../hooks/useModal";
 import useAuth from "../../hooks/useAuth";
 import { getInitials } from "../../service/getInitials";
 import "./style.css";
 
 const Dashboard = () => {
+<<<<<<< Updated upstream
   const [searchVal, setSearchVal] = useState(""); // Search input state
   const [searchResults, setSearchResults] = useState([]); // State for search results
   const [isLoading, setIsLoading] = useState(false); // Loading state
@@ -113,6 +114,56 @@ const Dashboard = () => {
           ) : (
             !isLoading && searchVal && <p>No users found.</p> // Show message if no users found
           )}
+=======
+  const [searchVal, setSearchVal] = useState("");
+  const { user } = useAuth();
+
+  const onChange = (e) => {
+    setSearchVal(e.target.value);
+  };
+
+  // Use the useModal hook to get the openModal and setModal functions
+  const { openModal, setModal } = useModal();
+
+  // Create a function to run on user interaction
+  const showModal = () => {
+    // Use setModal to set the header of the modal and the component the modal should render
+    setModal("Create a post", <CreatePostModal />); // CreatePostModal is just a standard React component, nothing special
+
+    // Open the modal!
+    openModal();
+  };
+
+  return (
+    <>
+      <main>
+        <Card>
+          <div className="create-post-input">
+            <div className="profile-icon">
+              <p>{`${user.firstName[0]}${user.lastName[0]}`}</p>
+            </div>
+            <Button text="What's on your mind?" onClick={showModal} />
+          </div>
+        </Card>
+
+        {/* <Posts /> */}
+      </main>
+
+      <aside>
+        <Card>
+          <form onSubmit={(e) => e.preventDefault()}>
+            <TextInput
+              icon={<SearchIcon />}
+              value={searchVal}
+              name="Search"
+              onChange={onChange}
+            />
+          </form>
+        </Card>
+
+        <Card>
+          <h4>My Cohort</h4>
+>>>>>>> Stashed changes
         </Card>
       </aside>
     </>
